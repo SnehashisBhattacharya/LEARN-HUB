@@ -1,174 +1,98 @@
-body {
+body, html {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-  }
-  
-  .container {
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto;   /* Allow vertical scrolling */
+    background-image: url('rocky scenery.jpg'); /* Adjust path as needed */
+    background-size: cover; /* Ensure the image covers the viewport */
+    background-position: center; /* Center the background image */
+    background-attachment: fixed; /* Keep the background image fixed */
+}
+
+.map-container {
     position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .background {
+    width: 100vw;  /* Full viewport width */
+    min-height: 100vh; /* Minimum height to cover the viewport */
+    background-image: url('treasure_map.jpg');
+    background-size: contain; /* Ensure the image fits within the viewport */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent tiling of the background image */
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent black background */
+}
+
+.map-container::before,
+.map-container::after {
+    content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    width: 20vw; /* Adjust width as needed */
     height: 100%;
-    background-image: url('background.jpg');
-    background-size: cover;
-    background-position: center center;
-    filter: brightness(0.7);
-    animation: moveBackground 10s linear infinite; /* Changed duration to 10s */
-    animation-play-state: running;
-  }
-  
-  .boy, .boy-jumping-with-joy, .boy-fell-down {
-    position: absolute;
-    left: 50%;
-    width: 150px;
-    height: 150px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform: translateX(-50%);
-  }
-  
-  .boy {
-    bottom: 20%;
-    animation: runAnimation 1s steps(2) infinite;
-  }
-  
-  .boy-jumping-with-joy {
-    bottom: 30%;
-    background-image: url('jumping.png');
-    display: none;
-  }
-  
-  .boy-fell-down {
-    bottom: 10%;
-    background-image: url('felldown.png');
-    display: none;
-  }
-  
-  .message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 36px;
-    font-weight: bold;
-    background: linear-gradient(45deg, #ff6f61, #ffeb3b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .message.correct {
-    opacity: 1;
-    animation: fadeIn 1s;
-  }
-  
-  .message.incorrect {
-    opacity: 1;
-    animation: fadeIn 1s;
-  }
-  
-  .question-container {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px;
-    border: 2px solid #fff;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  
-  .question {
-    font-size: 28px;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .sparkles {
-    position: absolute;
-    top: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: 5; /* Ensure the gradient is above the background image */
+}
+
+.map-container::before {
     left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    display: none;
-  }
-  
-  .sparkle {
+}
+
+.map-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* Marker styles here */
+.marker {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #ffd700;
-    border-radius: 50%;
-    opacity: 0;
-    animation: fall 1.5s linear forwards, sparkleFadeIn 0.3s ease-in-out;
-  }
-  
-  @keyframes moveBackground {
-    0% {
-      background-position: 100% 0; /* Start from the right */
-    }
-    100% {
-      background-position: 0 0; /* Move to the left */
-    }
-  }
-  
-  @keyframes runAnimation {
-    0% {
-      background-image: url('running1.png');
-    }
-    50% {
-      background-image: url('running2.png');
-    }
-    100% {
-      background-image: url('running1.png');
-    }
-  }
-  
-  @keyframes fadeIn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.marker:hover {
+    transform: scale(1.2);
+}
+
+.marker::after {
+    content: '⚔️';
+    font-size: 2rem;
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
     from {
-      opacity: 0;
+        text-shadow: 0 0 5px #ff9900, 0 0 10px #ff9900, 0 0 15px #ff9900, 0 0 20px #ff9900;
     }
     to {
-      opacity: 1;
+        text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000;
     }
-  }
-  
-  @keyframes fall {
-    0% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(100vh);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes sparkleFadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .background {
-      background-size: contain;
-      background-position: top center;
-    }
-  }
-  
+}
+
+.marker img {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.marker:hover img {
+    opacity: 1;
+}
+
+/* Marker positions (customize these to match the "X" marks on your image) */
+#marker1 { top: 20%; left: 32%; }
+#marker2 { top: 20%; left: 43%; }
+#marker3 { top: 28%; left: 56%; }
+#marker4 { top: 30%; left: 42%; }
+#marker5 { top: 33%; left: 67%; }
+#marker6 { top: 40%; left: 48%; }
+#marker7 { top: 45%; left: 39%; }
+#marker8 { top: 53%; left: 48%; }
+#marker9 { top: 61%; left: 39%; }
+#marker10 { top: 70%; left: 60%; }
