@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: url(Monster\ Odyssey.jpeg) no-repeat center center fixed;
+    background-size: cover; /* Adjusts the background image to cover the entire viewport */
+}
+
+#color-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px; /* Increase font size */
+    font-weight: bold;
+    color: white;
+    display: none; /* Hidden by default */
+    z-index: 1; /* Ensure it's on top of other elements */
+    padding: 20px; /* Add padding for better visibility */
+    background-color: rgba(0, 0, 0, 0.7); /* Add background for better contrast */
+    border-radius: 10px; /* Add border radius for rounded corners */
+}
+
+#restart-button {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    z-index: 1; /* Ensure it's on top of other elements */
+}
+
+#restart-button:hover {
+    background-color: #45a049;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none; /* Ensures the canvas background is transparent */
+}
+
+#sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Make sure sparkles don't interfere with user interactions */
+    overflow: hidden;
+    z-index: 1; /* Ensure it's on top of the canvas and behind the color indicator */
+}
+
+.sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkle-fall 3s linear infinite;
+}
+
+@keyframes sparkle-fall {
+    from {
+        transform: translateY(-100px); /* Start above the viewport */
+        opacity: 1;
+    }
+    to {
+        transform: translateY(calc(100vh + 10px)); /* End below the viewport */
+        opacity: 0;
+    }
+}
