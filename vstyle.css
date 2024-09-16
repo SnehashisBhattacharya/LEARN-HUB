@@ -1,0 +1,100 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto;   /* Allow vertical scrolling */
+    background-image: url('rocky scenery.jpg'); /* Adjust path as needed */
+    background-size: cover; /* Ensure the image covers the viewport */
+    background-position: center; /* Center the background image */
+    background-attachment: fixed; /* Keep the background image fixed */
+}
+
+.map-container {
+    position: relative;
+    width: 100vw;  /* Full viewport width */
+    min-height: 100vh; /* Minimum height to cover the viewport */
+    background-image: url('treasure_map.jpg');
+    background-size: contain; /* Ensure the image fits within the viewport */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent tiling of the background image */
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent black background */
+}
+
+.map-container::before,
+.map-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 20vw; /* Adjust width as needed */
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: 5; /* Ensure the gradient is above the background image */
+}
+
+.map-container::before {
+    left: 0;
+}
+
+.map-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* Marker styles */
+.marker {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.marker:hover {
+    transform: scale(1.2);
+}
+
+.marker::after {
+    content: '🏝️';
+    font-size: 2rem;
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #ff9900, 0 0 10px #ff9900, 0 0 15px #ff9900, 0 0 20px #ff9900;
+    }
+    to {
+        text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000;
+    }
+}
+
+/* Image styles: make images round and vanish unless hovered */
+.marker img {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    opacity: 0; /* Image is hidden by default */
+    border-radius: 50%; /* Make the image round */
+    transition: opacity 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.marker:hover img {
+    opacity: 1; /* Image becomes visible when hovered */
+}
+
+/* Marker positions (customize these to match the "X" marks on your image) */
+#marker1 { top: 20%; left: 32%; }
+#marker2 { top: 20%; left: 43%; }
+#marker3 { top: 28%; left: 56%; }
+#marker4 { top: 30%; left: 42%; }
+#marker5 { top: 33%; left: 67%; }
+#marker6 { top: 40%; left: 48%; }
+#marker7 { top: 45%; left: 39%; }
+#marker8 { top: 53%; left: 48%; }
+#marker9 { top: 61%; left: 39%; }
+#marker10 { top: 70%; left: 60%; }
