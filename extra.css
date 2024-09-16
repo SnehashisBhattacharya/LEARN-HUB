@@ -1,656 +1,174 @@
-/* Ensure body takes full height and doesn't overflow horizontally */
 body {
     margin: 0;
-    font-family: 'Pacifico', cursive;
-    background-color: #f0f8ff; /* Light background color */
-    overflow: hidden; /* Hide scrollbars caused by snowflakes or animations */
-}
-body {
-    background-color: #222;
-    color: #ddd;
-    font-size: 18px;
-    line-height: 1.4;
-    font-weight: 300;
-    margin: 0;
-    overflow-x: hidden; /* Hide horizontal overflow */
-    overflow-y: scroll; /* Allow vertical scrolling */
-}
-/* Header section with navigation options */
-
-/* Navigation Header */
-/* Root CSS Variables */
-/* General navbar container styles */
-.nav-header {
-    display: flex;
-    flex-direction: column; /* Stack navbar and nav-options vertically */
-    align-items: stretch; /* Stretch items to fill the container */
-    padding: 0; /* Remove padding */
-    background-color: #000000; /* Dark background */
-    position: fixed;
-    top: 0;
-    width: 100%; /* Full width */
-    z-index: 1000;
-}
-
-/* Main navbar styles */
-nav.navbar {
-    padding: 5px 10px;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: linear-gradient(135deg, #ff6f61, #d64d79, #8e44ad);
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background 0.5s ease; /* Smooth transition for background */
-    width: 100%; /* Ensure full-width */
-    box-sizing: border-box; /* Include padding and border in the width calculation */
-}
-
-/* Navbar background change on scroll */
-.navbar.scrolled {
-    background: linear-gradient(135deg, #8e44ad, #ff6f61, #d64d79); /* Change gradient on hover */
-    color: #333;
-}
-
-/* Navbar hover effect */
-.navbar.hovered {
-    background: linear-gradient(135deg, #8e44ad, #ff6f61, #d64d79); /* Change gradient on hover */
-    color: white;
-}
-
-/* Ensure hover effect works even when scrolled */
-.navbar.scrolled.hovered {
-    background: linear-gradient(135deg, #ff6f61, #d64d79, #8e44ad);
-    color: white;
-}
-
-/* Navbar left, center, and right section styles */
-.nav-left, .nav-center, .nav-right {
-    display: flex;
-    align-items: center;
-}
-
-.nav-center {
-    flex-grow: 1;
-    justify-content: center;
-}
-
-.search-bar {
-    padding: 12px;
-    border: none;
-    border-radius: 20px;
-    width: 60%;
-    max-width: 600px;
-    font-size: 16px;
-    transition: box-shadow 0.3s ease;
-}
-
-.search-bar:focus {
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.language-select {
-    padding: 8px;
-    border-radius: 12px;
-    border: none;
-    background-color: #fff;
-    color: #333;
-    font-size: 16px;
-}
-
-/* Button styles */
-.nav-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px;
-    background-color: #fff;
-    color: #000000;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-    font-size: 16px;
-}
-
-.nav-button:hover {
-    background-color: #ff9900; /* Change color on hover */
-    transform: scale(1.1); /* Slightly enlarge the button */
-}
-
-/* Styles for the lower navigation options */
-.nav-options {
-    display: flex;
-    justify-content: center;
-    background-color: #000000;
-    padding: 5px 0;
-}
-
-.nav-option {
-    margin: 0 100px; /* Space between options */
-    padding: 4px 6px;
-    background-color: #555; /* Background color for the boxes */
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.nav-option a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.nav-option:hover {
-    background-color: #ff9900;
-    transform: scale(1.1);
-}
-
-
-
-/*
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: linear-gradient(135deg, #ff6f61, #d64d79, #8e44ad);
-    color: white;
-    position: relative;
-    animation: colorChange 10s linear infinite; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background 0.5s ease;  Smooth transition for background 
-}
-
-.nav-left {
-    display: flex;
-    align-items: center;
-}
-
-.icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.nav-center {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.search-bar {
-    padding: 12px;
-    border: none;
-    border-radius: 20px; 
-    width: 60%;
-    max-width: 600px;
-    font-size: 16px;
-    transition: box-shadow 0.3s ease;
-}
-
-.search-bar:focus {
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 15px; 
-}
-
-.language-select {
-    padding: 8px;
-    border-radius: 12px;
-    border: none;
-    background-color: #fff;
-    color: #333;
-    font-size: 16px;
-}
-
-.nav-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px;
-    background-color: #fff;
-    color: #333;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-    font-size: 16px;
-}
-
-.nav-button:hover {
-    background-color: #ddd;
-    transform: scale(1.05);  Slightly enlarge on hover 
-}
-*/
-@keyframes colorChange {
-    0% { background: linear-gradient(135deg, #ff6f61, #d64d79); }
-    50% { background: linear-gradient(135deg, #8e44ad, #ff6f61); }
-    100% { background: linear-gradient(135deg, #d64d79, #8e44ad); }
-}
-
-/* Styling for headers */
-h1, h2 {
-    color: #fff; /* White color for better contrast */
-    font-weight: 400;
-    margin-bottom: 0;
-}
-
-/* Ensure panels are square and fit the viewport */
-.panel {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    
-    /* Set the background to the same green color for all panels */
-    background: rgba(122, 242, 122, 0.8); /* Green background for all panels */
-}
-
-/* Apply blending effect on image edges */
-.panel::before {
-    content: "";
-    position: absolute;
-    width: 100%; /* Cover the entire panel */
-    height: 100%; /* Cover the entire panel */
-    background-size: cover; /* Ensure the image covers the panel */
-    background-position: center; /* Center the image */
-    z-index: 1; /* Ensure image is above the panel background */
-
-    /* Mask with gradient to blend the sides */
-    mask-image: linear-gradient(
-        to right, 
-        transparent 0%, 
-        black 10%, /* Start blending from 10% */
-        black 90%, /* End blending at 90% */
-        transparent 100% /* End with transparent */
-    );
-    mask-mode: alpha;
-}
-
-/* Individual panel styles with images */
-.panel.blue::before {
-    background: url('front\ image2.jpg') no-repeat;
-}
-
-.panel.red::before {
-    background: url('playing\ video\ game.jpg') no-repeat;
-}
-
-.panel.gray::before {
-    background: url('watching\ video.jpg') no-repeat;
-}
-
-.panel.purple::before {
-    background: url('quiz\ image.jpg') no-repeat;
-}
-
-.panel.green::before {
-    background: url('coming\ soon\ mainpage.jpg') no-repeat;
-}
-
-
-/* Ensure the boxes fit well within the panels */
-.box {
-    width: 400px; /* Adjust size to fit well */
-    height: 120px; /* Ensure the box is rectangular */
-    text-align: center;
-    line-height: 120px;
-    font-size: 1.5rem; /* Increase font size */
-    background: linear-gradient(135deg, #41d3f7, #fe72e9); /* Lighter gradient background */
-    border-radius: 12px;
-    color: #222;
-    font-weight: 800;
-    margin-left: 20px;
-    will-change: transform;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    position: relative; /* To allow positioning within the panel */
-    z-index: 2; /* Ensure the box is above the gradient and image */
-    transition: background 0.3s, transform 0.3s; /* Smooth transition for hover effect */
-}
-
-/* Adjust the active state of the box */
-.box.active {
-    background: linear-gradient(135deg, #f5e4c6, #f3b364); /* Active state gradient */
-    border: 2px solid white;
-}
-
-/* Hover effect for box */
-.box:hover {
-    background: linear-gradient(135deg, #f7d6af, #e29300); /* Change gradient on hover */
-    transform: scale(1.2); /* Make the box 20% larger on hover */
-}
-
-
-
-
-
-
-.container {
-    width: 500%; /* Adjust as needed for your layout */
-    height: 100vh;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow: hidden; /* Ensure no overflow */
-}
-style.css footer {
-    color: white;
-    padding: 20px 0;
-    position: relative;
-    text-align: center;
-    font-family: 'Comic Sans MS', sans-serif;
-    overflow: hidden;
-    animation: skyCycle 30s linear infinite;
-}
-
-/* Top Three Games Section */
-.top-three-games {
-    background: linear-gradient(180deg, rgba(87, 206, 235, 1), rgba(87, 206, 235, 0.5), rgba(87, 206, 235, 0));
-    /* Default daytime colors */
-    padding: 50px 0;
-    text-align: center;
-    font-family: 'Comic Sans MS', sans-serif;
-    color: white;
-    font-size: 24px;
-    position: relative;
-    animation: skyCycle 30s linear infinite;
-    /* Syncing the animation */
-}
-
-.top-three-games h2 {
-    font-size: 36px;
-    margin-bottom: 30px;
-}
-
-.game-cards {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.game-card {
-    width: 250px;
-    /* Rectangular shape */
-    height: 250px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 25px;
-    /* Curved edges */
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
-
-.game-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
-}
-
-.game-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    text-align: center;
-    font-size: 18px;
-    transition: background 0.3s ease;
-}
-
-.game-card:hover .game-info {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-/* Blending the footer with the top three games section */
-footer {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(87, 206, 235, 0.5));
-    /* Transparent dark blending into sky blue */
-    color: white;
-    padding: 20px;
-    text-align: center;
-    animation: skyCycle 30s linear infinite;
-    /* Syncing the animation */
-    position: relative;
-}
-
-/* Morning to night animation for both sections */
-@keyframes skyCycle {
-    0% {
-        background: linear-gradient(180deg, rgba(87, 206, 235, 1), rgba(87, 206, 235, 0.5), rgba(87, 206, 235, 0));
-    }
-
-    /* Morning sky */
-    50% {
-        background: linear-gradient(180deg, rgba(0, 51, 102, 1), rgba(0, 51, 102, 0.5), rgba(0, 51, 102, 0));
-        /* Evening sky */
-    }
-
-    100% {
-        background: linear-gradient(180deg, rgba(0, 0, 51, 1), rgba(0, 0, 51, 0.5), rgba(0, 0, 51, 0));
-        /* Night sky */
-    }
-}
-
-footer p {
-    margin: 0;
     padding: 0;
-}
-
-
-
-.icon {
-    background-color: transparent;
-    /* Remove background color */
-    width: 50px;
-    height: 50px;
-    margin: 0 10px;
-    border-radius: 50%;
-    display: inline-block;
-    background-size: cover;
-    background-position: center;
-}
-
-.icon.facebook {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg');
-    /* Correct URL for Facebook logo */
-}
-
-.icon.instagram {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
-    /* Correct URL for Instagram logo */
-}
-
-
-
-
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.footer-section h4 {
-    font-size: 1.5em;
-    color: #fff;
-    animation: float 4s ease-in-out infinite;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin: 10px 0;
-}
-
-.footer-section ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.2em;
-    position: relative;
-    animation: bounce 2s ease-in-out infinite;
-}
-
-.footer-section ul li a:hover {
-    color: #ffdd57;
-    animation: none;
-}
-
-.footer-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.icon {
-    background-color: white;
-    width: 50px;
-    height: 50px;
-    margin: 0 10px;
-    border-radius: 50%;
-    position: relative;
-    display: inline-block;
-    animation: bounce 3s ease-in-out infinite;
-}
-
-.icon:hover {
-    transform: scale(1.2);
-    transition: 0.3s ease-in-out;
-}
-
-
-.footer-bottom {
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
-    margin-top: 20px;
-    font-size: 0.9em;
-}
-
-/* Cloud Animation */
-.clouds {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
     overflow: hidden;
-}
-
-.cloud {
-    width: 150px;
-    height: 50px;
-    background: white;
-    border-radius: 50px;
-    position: absolute;
-    top: 10px;
-    opacity: 0.8;
-    animation: moveClouds 30s linear infinite;
-}
-
-.cloud:nth-child(2) {
-    width: 200px;
-    height: 60px;
-    top: 50px;
-    animation-duration: 40s;
-}
-
-@keyframes moveClouds {
-    0% {
-        left: -150px;
-    }
-
-    100% {
-        left: 100%;
-    }
-}
-
-/* Background color change for day cycle */
-@keyframes skyCycle {
-    0% {
-        background: #87ceeb;
-        /* Morning - Light blue */
-    }
-
-    30% {
-        background: #f0e68c;
-        /* Afternoon - Light yellow */
-    }
-
-    60% {
-        background: #ff6347;
-        /* Evening - Orange */
-    }
-
-    85% {
-        background: #2c3e50;
-        /* Night - Dark blue */
-    }
-
-    100% {
-        background: #2c3e50;
-        /* Full night */
-    }
-}
-
-/* Floating Stars */
-#stars {
-    display: none;
+  }
+  
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-.star {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(0.7);
+    animation: moveBackground 10s linear infinite; /* Changed duration to 10s */
+    animation-play-state: running;
+  }
+  
+  .boy, .boy-jumping-with-joy, .boy-fell-down {
+    position: absolute;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateX(-50%);
+  }
+  
+  .boy {
+    bottom: 20%;
+    animation: runAnimation 1s steps(2) infinite;
+  }
+  
+  .boy-jumping-with-joy {
+    bottom: 30%;
+    background-image: url('jumping.png');
+    display: none;
+  }
+  
+  .boy-fell-down {
+    bottom: 10%;
+    background-image: url('felldown.png');
+    display: none;
+  }
+  
+  .message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff6f61, #ffeb3b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .message.correct {
+    opacity: 1;
+    animation: fadeIn 1s;
+  }
+  
+  .message.incorrect {
+    opacity: 1;
+    animation: fadeIn 1s;
+  }
+  
+  .question-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .question {
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    display: none;
+  }
+  
+  .sparkle {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: white;
+    background-color: #ffd700;
     border-radius: 50%;
-}
-#unmute-btn {
-    position: fixed;
-    top: 6px;
-    right: 400px; /* Adjust the right position to move it left */
-    width: 50px; /* Set the width and height to make it a circle */
-    height: 50px;
-    background-color: black; /* Black background for the circle */
-    color: white;
-    border: none;
-    border-radius: 50%; /* Make the button a circle */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1000;
-    font-size: 16px; /* Adjust font size to fit the circle */
-}
-
-#unmute-btn:hover {
-    background-color: #333; /* Darker color on hover */
-}
-
+    opacity: 0;
+    animation: fall 1.5s linear forwards, sparkleFadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes moveBackground {
+    0% {
+      background-position: 100% 0; /* Start from the right */
+    }
+    100% {
+      background-position: 0 0; /* Move to the left */
+    }
+  }
+  
+  @keyframes runAnimation {
+    0% {
+      background-image: url('running1.png');
+    }
+    50% {
+      background-image: url('running2.png');
+    }
+    100% {
+      background-image: url('running1.png');
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes sparkleFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .background {
+      background-size: contain;
+      background-position: top center;
+    }
+  }
+  
